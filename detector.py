@@ -96,12 +96,16 @@ def open_image(fileobj) -> Image.Image:
     return img.convert("RGB")
 
 
-def detect(
+def run_inference(
     model,
     image: Image.Image,
     conf: float = 0.25,
-) -> tuple[list[Detection], Image.Image]:
-    """Run YOLO inference and return detections plus an annotated image."""
+) -> list[Detection]:
+    """Run YOLO inference on a PIL image and return sorted detections.
+
+    Shared by the image mode and the video mode so both use the same
+    model settings, classes and confidence handling.
+    """
     if not 0.0 <= conf <= 1.0:
         raise ValueError(
             "Confidence threshold must be between 0 and 1."
@@ -144,6 +148,14 @@ def detect(
         reverse=True,
     )
 
+    return detections
+
+
+def draw_detections(
+    image: Image.Image,
+    detections: list[Detection],
+) -> Image.Image:
+    """Draw coloured bounding boxes and labels on a copy of the image."""
     # Draw our own boxes and labels instead of result.plot().
     annotated = image.convert("RGB").copy()
     draw = ImageDraw.Draw(annotated)
@@ -229,6 +241,18 @@ def detect(
             fill=TEXT_COLOR,
             font=font,
         )
+
+    return annotated
+
+
+def detect(
+    model,
+    image: Image.Image,
+    conf: float = 0.25,
+) -> tuple[list[Detection], Image.Image]:
+    """Run YOLO inference and return detections plus an annotated image."""
+    detections = run_inference(model, image, conf=conf)
+    annotated = draw_detections(image, detections)
 
     return detections, annotated
 

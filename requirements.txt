@@ -5,3 +5,10 @@
 #   python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 ultralytics>=8.3.0
 PyYAML>=6.0
+
+# Streamlit web app (image + video detection modes)
+streamlit>=1.32
+pillow>=10.0
+# Video frame reading/writing for the video detection mode.
+# (opencv wheels already installed here: opencv-python 4.13.x)
+opencv-python>=4.8
