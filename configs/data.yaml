@@ -1,0 +1,13 @@
+# TXL-PBC dataset configuration for YOLO11 training.
+# Class indices MUST match the label files (verified from labels/*/*.txt):
+#   0 = WBC (1,298 boxes), 1 = RBC (16,302), 2 = Platelets (543)
+# Do NOT reorder: the model learns from these ids directly.
+path: D:/blood-cell-yolo11-research/dataset/TXL-PBC_Dataset-master/TXL-PBC
+train: images/train
+val: images/val
+test: images/test
+nc: 3
+names:
+  0: WBC
+  1: RBC
+  2: Platelets

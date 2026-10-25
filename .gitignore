@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Training artifacts
+runs/
+*.pt
+*.onnx
+
+# Extracted dataset source (kept locally, not versioned)
+dataset/
+
+# OS / logs
+*.log
+Thumbs.db
+.DS_Store
+
+# Include the final trained model
+!final_results/best.pt
+
+# Local audit artifacts
+audit/
+
+# Python environment and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml

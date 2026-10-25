@@ -1,0 +1,7 @@
+# Dependencies for YOLO11 training on TXL-PBC (Python 3.11).
+# Already present on this machine: torch 2.9.1+cpu, PyYAML 6.0.3.
+# This machine has no NVIDIA driver -> training runs on CPU with these wheels.
+# On a CUDA machine, install a GPU torch first, e.g.:
+#   python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+ultralytics>=8.3.0
+PyYAML>=6.0
