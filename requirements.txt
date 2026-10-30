@@ -1,14 +1,12 @@
-# Dependencies for YOLO11 training on TXL-PBC (Python 3.11).
-# Already present on this machine: torch 2.9.1+cpu, PyYAML 6.0.3.
-# This machine has no NVIDIA driver -> training runs on CPU with these wheels.
-# On a CUDA machine, install a GPU torch first, e.g.:
-#   python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
-ultralytics>=8.3.0
+
+# Core YOLO detection
+ultralytics>=8.3.0,<9.0
 PyYAML>=6.0
 
-# Streamlit web app (image + video detection modes)
+# Streamlit web application
 streamlit>=1.32
 pillow>=10.0
-# Video frame reading/writing for the video detection mode.
-# (opencv wheels already installed here: opencv-python 4.13.x)
-opencv-python>=4.8
+numpy<2.3
+
+# Headless OpenCV for Streamlit Cloud
+opencv-python-headless>=4.10,<5.0
