@@ -9,4 +9,4 @@ pillow>=10.0
 numpy<2.3
 
 # Headless OpenCV for Streamlit Cloud
-opencv-python-headless>=4.10,<5.0
+opencv-python-headless==4.10.0.84
